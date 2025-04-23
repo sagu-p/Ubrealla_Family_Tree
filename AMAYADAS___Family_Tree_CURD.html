@@ -302,11 +302,16 @@
         memberHTML += `<button class="add-child-btn" data-id="${member.id}">Add Child</button>`;
         memberHTML += `</div>`;
 
-        const children = allMembers.filter(m => m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId));
+        //const children = allMembers.filter(m => m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId));
+        const children = allMembers
+                            .filter(m => m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId))
+                            .sort((a, b) => (a.createdAt?.seconds || 0) - (b.createdAt?.seconds || 0));
+
 
         if (children.length > 0) {
-            memberHTML += `<ul class="collapsed">`;
-            children.forEach(child => {
+            //memberHTML += `<ul class="collapsed">`;
+                memberHTML += `<ul>`;
+                children.forEach(child => {
                 memberHTML += generateTreeHTML(child, allMembers);
             });
             memberHTML += `</ul>`;
@@ -421,7 +426,8 @@
         if (isAddingSpouse) {
             // Update the current member's spouseId with the new spouse
             const spouseDoc = await db.collection("WholeFamily_AmayDas_Kolasana").add({
-                name, birthdate, native, location, phone, picUrl: pictureUrl
+                name, birthdate, native, location, phone, picUrl: pictureUrl,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp() //Add Time stamp to sort the childrens
             });
             await db.collection("WholeFamily_AmayDas_Kolasana").doc(currentMemberId).update({
                 spouseId: spouseDoc.id
@@ -430,7 +436,8 @@
             // Add child member with parentId
             const parentId = document.getElementById("addFamilyModal").getAttribute('data-parent-id');
             await db.collection("WholeFamily_AmayDas_Kolasana").add({
-                name, birthdate, native, location, phone, picUrl: pictureUrl, parentId
+                name, birthdate, native, location, phone, picUrl: pictureUrl, parentId,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp() ////Add Time stamp to sort the childrens
             });
         }
         window.location.reload();

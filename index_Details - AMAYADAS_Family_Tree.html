@@ -463,7 +463,8 @@
             }
 
             // Find children of the current member by checking the parentId
-            const children = allMembers.filter(m => m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId));
+            const children = allMembers.filter(m => m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId))
+                                        .sort((a, b) => (a.createdAt?.seconds || 0) - (b.createdAt?.seconds || 0));
 
             if (children.length > 0) {
                 memberHTML += `<ul class="collapsed">`;

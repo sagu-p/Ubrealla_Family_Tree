@@ -338,7 +338,7 @@
 <!-- <body class="tree-container"> -->
 
 <body>
-    <h1 style="text-align: center; color: #fff956;">Amaydas Aahaji Patel's Family Tree</h1>
+    <h1 style="text-align: center; color: #fff956;">Amaydas Patel's Family Tree</h1>
     <h3 style="text-align: center;">
         <p style="color: #ffffff; background-color: #f4938f;">🕊️ Crafted with care by Sagar C. Patel, this tree of life grows from the cherished memories shared by Bharat I. Patel, its roots deep in love and legacy.</p>
     </h3>
@@ -347,9 +347,9 @@
     <div class="expand-collapse-buttons">
         <button id="expand-all">Expand All</button>
         <button id="collapse-all">Collapse All</button>
-        <!-- <h4 style="text-align: center; color: #ff0000;">
+        <h4 style="text-align: center; color: #ff0000;">
             *To see more infomation about the person; Click on ⓘ next to the name of the family member.
-        </h4> -->
+        </h4>
     </div>
 
     <!-- Scrollable Wrapper for family tree -->
@@ -446,9 +446,9 @@
             let memberHTML = `<li>`;
 
             //show picture of the member
-            //memberHTML += `<div class="member-name"> <img class="member-picture-tree" src="${member.picUrl}" alt="Member Picture" onerror="this.src='https://tinyurl.com/26hal84z'">`;
+            memberHTML += `<div class="member-name"> <img class="member-picture-tree" src="${member.picUrl}" alt="Member Picture" onerror="this.src='https://tinyurl.com/26hal84z'">`;
             // Display the member name
-            memberHTML += `<a href="#" data-id="${member.id}">${member.name}</a>`;
+            memberHTML += `<a href="#" data-id="${member.id}">${member.name}</a></div>`;
             // Add the info icon (Karsan ⓘ)
             //memberHTML += `<span class="info-icon" data-id="${member.id}">ⓘ</span> </div>`;
 
@@ -456,14 +456,15 @@
             if (member.spouseId) {
                 const spouse = allMembers.find(m => m.id === member.spouseId);
                 if (spouse) {
-                    //memberHTML += `& <div class="member-name"> <img class="member-picture-tree" src="${spouse.picUrl}" alt="Member Picture" onerror="this.src='https://tinyurl.com/26hal84z'">`;
-                    memberHTML += ` & <a href="#" data-id="${spouse.id}">${spouse.name}</a>`;
+                    memberHTML += `& <div class="member-name"> <img class="member-picture-tree" src="${spouse.picUrl}" alt="Member Picture" onerror="this.src='https://tinyurl.com/26hal84z'">`;
+                    memberHTML += `<a href="#" data-id="${spouse.id}">${spouse.name}</a> </div>`;
                     //memberHTML += `<span class="info-icon" data-id="${spouse.id}">ⓘ</span> </div>`;
                 }
             }
 
             // Find children of the current member by checking the parentId
-            const children = allMembers.filter(m => m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId));
+            const children = allMembers.filter(m => m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId))
+                                        .sort((a, b) => (a.createdAt?.seconds || 0) - (b.createdAt?.seconds || 0));
 
             if (children.length > 0) {
                 memberHTML += `<ul class="collapsed">`;
