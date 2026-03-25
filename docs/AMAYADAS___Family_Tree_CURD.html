@@ -23,7 +23,6 @@
       --shadow: 0 16px 44px rgba(0,0,0,.55);
       --radius:18px;
 
-      /* Responsive geometry */
       --cardW: clamp(150px, 42vw, 210px);
       --photo: clamp(96px, 24vw, 126px);
       --gap: clamp(10px, 3vw, 18px);
@@ -43,7 +42,6 @@
       overflow: hidden;
     }
 
-    /* ---------- Top Bar ---------- */
     .topbar{
       position: sticky;
       top: 0;
@@ -65,6 +63,7 @@
       letter-spacing: .2px;
       line-height: 1.1;
     }
+
     .brand p{
       margin: 6px 0 0;
       font-size: 12px;
@@ -80,6 +79,7 @@
       justify-content:flex-end;
       flex-wrap: wrap;
     }
+
     .btn{
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
@@ -91,15 +91,18 @@
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
       user-select:none;
     }
+
     .btn:hover{
       transform: translateY(-1px);
       background: rgba(255,255,255,.09);
       border-color: rgba(255,255,255,.20);
     }
+
     .btn.primary{
       background: rgba(255,138,0,.18);
       border-color: rgba(255,138,0,.28);
     }
+
     .btn.primary:hover{
       background: rgba(255,138,0,.24);
       border-color: rgba(255,138,0,.35);
@@ -116,12 +119,14 @@
       min-width: 260px;
       box-shadow: 0 10px 22px rgba(0,0,0,.25);
     }
+
     .search .hint{
       font-size: 12px;
       color: rgba(255,255,255,.55);
       user-select:none;
       white-space: nowrap;
     }
+
     .search input{
       width: 100%;
       border: 0;
@@ -142,7 +147,6 @@
       .brand p{ display:none; }
     }
 
-    /* ---------- Scrollable Canvas ---------- */
     #family-tree-wrapper{
       height: calc(100vh - 72px);
       overflow: auto;
@@ -151,6 +155,7 @@
       -webkit-overflow-scrolling: touch;
       touch-action: pan-x pan-y;
     }
+
     @media (max-width: 860px){
       #family-tree-wrapper{ height: calc(100vh - 190px); }
     }
@@ -161,7 +166,6 @@
       margin: 0 auto;
     }
 
-    /* ---------- Tree Layout ---------- */
     .tree ul{
       display:flex;
       justify-content:center;
@@ -171,6 +175,7 @@
       margin: 0;
       white-space: nowrap;
     }
+
     .tree li{
       list-style:none;
       padding: var(--padTop) var(--liPadX) 0;
@@ -189,7 +194,9 @@
       height: var(--padTop);
       border-top: var(--stroke) solid var(--line);
     }
+
     .tree li::before{ right: 50%; }
+
     .tree li::after{
       left: 50%;
       border-left: var(--stroke) solid var(--line);
@@ -197,6 +204,7 @@
 
     .tree li:only-child::before,
     .tree li:only-child::after{ display:none; }
+
     .tree li:only-child{ padding-top: 0; }
 
     .tree li:first-child::before,
@@ -224,7 +232,6 @@
       flex-direction: row;
     }
 
-    /* ---------- Node Card ---------- */
     .node-wrap{ position: relative; display: inline-block; }
 
     .node-card{
@@ -240,11 +247,13 @@
       -webkit-tap-highlight-color: transparent;
       user-select:none;
     }
+
     .node-card:hover{
       transform: translateY(-2px);
       border-color: var(--border2);
       box-shadow: 0 18px 55px rgba(0,0,0,.62);
     }
+
     .node-card:active{ transform: translateY(0px) scale(0.99); }
 
     .node-top{
@@ -255,10 +264,17 @@
       padding: 8px 10px;
       background: var(--accent, #ff8a00);
     }
+
     .dots{
       letter-spacing: 2px;
       font-weight: 900;
       opacity: .95;
+      user-select: none;
+    }
+
+    .mini-icon{
+      cursor: pointer;
+      font-size: 14px;
       user-select: none;
     }
 
@@ -271,6 +287,7 @@
       background: rgba(0,0,0,.25);
       border: 1px solid rgba(255,255,255,.10);
     }
+
     .node-photo img{
       width: 100%;
       height: 100%;
@@ -278,6 +295,7 @@
       display:block;
       transition: filter .25s ease, opacity .25s ease;
     }
+
     .node-card.deceased-card .node-photo img{
       filter: grayscale(0.9) contrast(1.05) brightness(0.95);
     }
@@ -296,6 +314,7 @@
       justify-content:center;
       padding: 0 12px 14px;
     }
+
     .badge{
       display:inline-flex;
       align-items:center;
@@ -312,16 +331,17 @@
       white-space: nowrap;
       user-select: none;
     }
+
     .badge.alive{
       border-color: rgba(120,255,170,.22);
       background: rgba(20,140,70,.18);
     }
+
     .badge.deceased{
       border-color: rgba(255,210,120,.22);
       background: rgba(170,110,10,.20);
     }
 
-    /* CRUD overlay buttons on each node */
     .crud-actions{
       position: absolute;
       left: 50%;
@@ -334,11 +354,13 @@
       pointer-events: none;
       transition: opacity .15s ease;
     }
+
     .node-wrap:hover .crud-actions,
     .node-wrap:focus-within .crud-actions{
       opacity: 1;
       pointer-events: auto;
     }
+
     .mini-btn{
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.35);
@@ -350,31 +372,31 @@
       user-select: none;
       backdrop-filter: blur(6px);
     }
+
     .mini-btn:hover{
       border-color: rgba(255,255,255,.22);
       background: rgba(0,0,0,.45);
     }
 
-    /* Highlight from search */
     .node-card.highlight{
       box-shadow: 0 0 0 3px rgba(255,255,255,.22), 0 24px 70px rgba(0,0,0,.70);
       border-color: rgba(255,255,255,.35);
       transform: translateY(-2px) scale(1.02);
     }
 
-    /* Fade expand/collapse */
     @keyframes fadeInBranch {
       from { opacity: 0; transform: translateY(-4px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes fadeOutBranch {
       from { opacity: 1; transform: translateY(0); }
       to   { opacity: 0; transform: translateY(-4px); }
     }
+
     .branch-opening{ animation: fadeInBranch 220ms ease-out both; }
     .branch-closing{ animation: fadeOutBranch 180ms ease-in both; }
 
-    /* PHONE: smaller cards, keep PC look */
     @media (max-width: 520px){
       :root{
         --cardW: 140px;
@@ -389,6 +411,7 @@
       .crud-actions{ bottom: -16px; }
       .mini-btn{ font-size: 11px; padding: 6px 9px; }
     }
+
     @media (max-width: 380px){
       :root{
         --cardW: 128px;
@@ -399,7 +422,6 @@
       }
     }
 
-    /* ---------- Modal ---------- */
     .modal{
       display:none;
       position: fixed;
@@ -410,6 +432,7 @@
       padding: 50px 16px;
       overflow:auto;
     }
+
     .modal-content{
       max-width: 560px;
       margin: 0 auto;
@@ -419,6 +442,7 @@
       padding: 16px 16px 14px;
       box-shadow: 0 24px 70px rgba(0,0,0,.6);
     }
+
     .close{
       float:right;
       font-size: 26px;
@@ -427,6 +451,7 @@
       cursor:pointer;
       user-select:none;
     }
+
     .close:hover{ color:#fff; }
 
     .field{
@@ -435,11 +460,13 @@
       gap: 6px;
       margin: 10px 0;
     }
+
     .field label{
       font-size: 12px;
       color: rgba(255,255,255,.75);
       font-weight: 700;
     }
+
     .field input[type="text"],
     .field input[type="date"]{
       width: 100%;
@@ -450,15 +477,18 @@
       color: var(--text);
       outline: none;
     }
+
     .row{
       display:flex;
       align-items:center;
       gap: 10px;
       margin: 10px 0;
     }
+
     .row input[type="checkbox"]{
       transform: scale(1.2);
     }
+
     .row label{
       margin: 0;
       font-size: 13px;
@@ -466,7 +496,6 @@
       color: rgba(255,255,255,.9);
     }
 
-    /* Modal image stays normal color */
     .member-picture{
       width: min(240px, 78vw);
       height: min(240px, 78vw);
@@ -484,16 +513,17 @@
       margin-top: 12px;
       flex-wrap: wrap;
     }
+
     .danger{
       background: rgba(255,60,60,.14);
       border-color: rgba(255,60,60,.25);
     }
+
     .danger:hover{
       background: rgba(255,60,60,.20);
       border-color: rgba(255,60,60,.35);
     }
 
-    /* Fullscreen image overlay */
     #image-overlay{
       display:none;
       position: fixed;
@@ -505,6 +535,7 @@
       flex-direction: column;
       padding: 22px;
     }
+
     #image-overlay img{
       max-width: 92vw;
       max-height: 85vh;
@@ -512,6 +543,7 @@
       border: 1px solid rgba(255,255,255,.12);
       box-shadow: 0 20px 70px rgba(0,0,0,.65);
     }
+
     #close-button{
       position:absolute;
       top: 14px;
@@ -549,7 +581,6 @@
     <div id="family-tree" class="tree"></div>
   </div>
 
-  <!-- EDIT MODAL (Update / Delete) -->
   <div id="editModal" class="modal">
     <div class="modal-content">
       <span class="close" id="editClose">&times;</span>
@@ -601,7 +632,6 @@
     </div>
   </div>
 
-  <!-- ADD MODAL (Create Child / Spouse / Root) -->
   <div id="addModal" class="modal">
     <div class="modal-content">
       <span class="close" id="addClose">&times;</span>
@@ -648,19 +678,16 @@
     </div>
   </div>
 
-  <!-- Fullscreen image overlay -->
   <div id="image-overlay">
     <span id="close-button" onclick="closeFullscreen()">&#10006;</span>
     <img id="full-image" src="" alt="Full View">
   </div>
 
-  <!-- Firebase (v8.x) -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
   <script>
-    // ✅ Firebase configuration (fill yours)
     const firebaseConfig = {
         apiKey: "AIzaSyBFsvUtF5LNVVgCUBIjjGJ-Qjby9m2DTWA",
         authDomain: "family-tree-5a724.firebaseapp.com",
@@ -675,28 +702,40 @@
     const storage = firebase.storage();
 
     let cachedMembers = [];
-
-    // CRUD context for "Add" modal
-    // mode: 'root' | 'child' | 'spouse'
     let addMode = 'child';
-    let addTargetId = null; // parentId for child, memberId for spouse
-
-    // current edit context
+    let addTargetId = null;
     let currentMemberId = null;
     let currentPictureUrl = null;
 
-    /* ---------------- Data fetch/render ---------------- */
+    function getCreatedAtValue(member) {
+      const c = member.createdAt;
+
+      if (!c) return 0;
+      if (typeof c.toMillis === 'function') return c.toMillis();
+      if (c instanceof Date) return c.getTime();
+      if (typeof c === 'number') return c;
+
+      const parsed = new Date(c).getTime();
+      return isNaN(parsed) ? 0 : parsed;
+    }
+
     async function fetchFamilyMembers() {
       const snap = await db.collection("WholeFamily_AmayDas_Kolasana").get();
       const members = [];
       snap.forEach(doc => members.push({ id: doc.id, ...doc.data() }));
+
+      members.sort((a, b) => getCreatedAtValue(a) - getCreatedAtValue(b));
+
       cachedMembers = members;
       displayFamilyTree(members);
     }
 
     function displayFamilyTree(familyMembers) {
       const familyTreeDiv = document.getElementById('family-tree');
-      const rootMembers = familyMembers.filter(m => m.parentId === "00");
+
+      const rootMembers = familyMembers
+        .filter(m => m.parentId === "00")
+        .sort((a, b) => getCreatedAtValue(a) - getCreatedAtValue(b));
 
       if (!rootMembers.length) {
         familyTreeDiv.innerHTML = "<p style='color:rgba(255,255,255,.7)'>No root members found (parentId should be \"00\"). Use “Add Root”.</p>";
@@ -704,14 +743,15 @@
       }
 
       let html = "";
-      rootMembers.forEach(root => { html += generateTreeHTML(root, familyMembers); });
-      familyTreeDiv.innerHTML = `<ul>${html}</ul>`;
+      rootMembers.forEach(root => {
+        html += generateTreeHTML(root, familyMembers);
+      });
 
+      familyTreeDiv.innerHTML = `<ul>${html}</ul>`;
       addTreeListeners(familyMembers);
       adjustScrollToCenter();
     }
 
-    // Deceased -> grey header, Alive -> orange (or accentColor)
     function accentFor(member) {
       if (member.isDeceased === true) return "#6b6b6b";
       return member.accentColor || "#ff8a00";
@@ -771,13 +811,17 @@
         html += nodeCardHTML(member);
       }
 
-      const children = allMembers.filter(m =>
-        m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId)
-      );
+      const children = allMembers
+        .filter(m =>
+          m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId)
+        )
+        .sort((a, b) => getCreatedAtValue(a) - getCreatedAtValue(b));
 
       if (children.length) {
         html += `<ul class="collapsed">`;
-        children.forEach(child => { html += generateTreeHTML(child, allMembers); });
+        children.forEach(child => {
+          html += generateTreeHTML(child, allMembers);
+        });
         html += `</ul>`;
       }
 
@@ -785,7 +829,6 @@
       return html;
     }
 
-    /* ---------------- Expand/collapse animations ---------------- */
     function toggleBranch(childrenUl, open) {
       if (!childrenUl) return;
 
@@ -805,11 +848,10 @@
     }
 
     function addTreeListeners(familyMembers) {
-      // Toggle children on card click (not when clicking any CRUD buttons)
       document.querySelectorAll('.node-card').forEach(card => {
         card.addEventListener('click', (e) => {
-          if (e.target.closest('[data-edit]')) return; // edit icon
-          if (e.target.closest('.crud-actions')) return; // overlay buttons
+          if (e.target.closest('[data-edit]')) return;
+          if (e.target.closest('.crud-actions')) return;
 
           const li = card.closest('li');
           const childrenUl = li ? li.querySelector(':scope > ul') : null;
@@ -829,7 +871,6 @@
         });
       });
 
-      // Edit (update/delete) modal
       document.querySelectorAll('[data-edit]').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -839,28 +880,25 @@
         });
       });
 
-      // Add child modal
       document.querySelectorAll('[data-add-child]').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
           addMode = 'child';
-          addTargetId = btn.getAttribute('data-add-child'); // parentId
+          addTargetId = btn.getAttribute('data-add-child');
           openAddModal(`Add Child`);
         });
       });
 
-      // Add spouse modal
       document.querySelectorAll('[data-add-spouse]').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
           addMode = 'spouse';
-          addTargetId = btn.getAttribute('data-add-spouse'); // memberId to attach spouseId
+          addTargetId = btn.getAttribute('data-add-spouse');
           openAddModal(`Add Spouse`);
         });
       });
     }
 
-    /* ---------------- Toolbar actions ---------------- */
     document.getElementById('expand-all').addEventListener('click', () => {
       document.querySelectorAll('#family-tree ul').forEach(ul => {
         if (ul.classList.contains('collapsed')) toggleBranch(ul, true);
@@ -891,7 +929,6 @@
       wrapper.scrollTop  = 0;
     }
 
-    /* ---------------- Search ---------------- */
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('keydown', (e) => {
       if (e.key !== 'Enter') return;
@@ -903,7 +940,6 @@
       const match = cachedMembers.find(m => (m.name || "").toLowerCase().includes(q));
       if (!match) return;
 
-      // expand all for simplicity so it can find element
       document.querySelectorAll('#family-tree ul').forEach(ul => {
         if (ul.classList.contains('collapsed')) toggleBranch(ul, true);
       });
@@ -918,7 +954,6 @@
       }, 220);
     });
 
-    /* ---------------- Storage upload ---------------- */
     async function uploadPicture(file, fallbackUrl) {
       if (!file) return fallbackUrl || null;
       const storageRef = storage.ref(`family_members/${Date.now()}_${file.name}`);
@@ -927,7 +962,6 @@
       return await uploadTask.snapshot.ref.getDownloadURL();
     }
 
-    /* ---------------- Edit modal (Update / Delete) ---------------- */
     const editModal = document.getElementById('editModal');
     document.getElementById('editClose').onclick = () => editModal.style.display = 'none';
 
@@ -982,7 +1016,6 @@
       window.location.reload();
     });
 
-    /* ---------------- Add modal (Create) ---------------- */
     const addModal = document.getElementById('addModal');
     document.getElementById('addClose').onclick = () => addModal.style.display = 'none';
 
@@ -1022,7 +1055,8 @@
         location,
         deathdate,
         isDeceased,
-        picUrl: picUrl || null
+        picUrl: picUrl || null,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
       };
 
       if (addMode === 'root') {
@@ -1039,8 +1073,8 @@
       } else if (addMode === 'spouse') {
         const spouseDoc = await db.collection("WholeFamily_AmayDas_Kolasana").add({
           ...baseData
-          // spouse doc can have no parentId; that's okay for spouse records
         });
+
         await db.collection("WholeFamily_AmayDas_Kolasana").doc(addTargetId).update({
           spouseId: spouseDoc.id
         });
@@ -1049,18 +1083,17 @@
       window.location.reload();
     });
 
-    /* ---------------- Image fullscreen ---------------- */
     function openFullscreen(src) {
       const overlay = document.getElementById('image-overlay');
       const fullImg = document.getElementById('full-image');
       fullImg.src = src;
       overlay.style.display = 'flex';
     }
+
     function closeFullscreen() {
       document.getElementById('image-overlay').style.display = 'none';
     }
 
-    // close modals when clicking outside
     window.addEventListener('click', (e) => {
       if (e.target === editModal) editModal.style.display = 'none';
       if (e.target === addModal) addModal.style.display = 'none';

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -10,20 +11,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#141414;
-      --bg2:#1c1c1c;
-      --panel:rgba(255,255,255,.06);
-      --panel2:rgba(255,255,255,.04);
-      --border:rgba(255,255,255,.12);
-      --border2:rgba(255,255,255,.18);
-      --line:rgba(200,200,200,.55);
-      --text:#f1f1f1;
-      --muted:rgba(255,255,255,.70);
-      --shadow: 0 16px 44px rgba(0,0,0,.55);
-      --radius:18px;
+    :root {
+      --bg: #141414;
+      --bg2: #1c1c1c;
+      --panel: rgba(255, 255, 255, .06);
+      --panel2: rgba(255, 255, 255, .04);
+      --border: rgba(255, 255, 255, .12);
+      --border2: rgba(255, 255, 255, .18);
+      --line: rgba(200, 200, 200, .55);
+      --text: #f1f1f1;
+      --muted: rgba(255, 255, 255, .70);
+      --shadow: 0 16px 44px rgba(0, 0, 0, .55);
+      --radius: 18px;
 
-      /* Smaller because names-only */
       --cardW: clamp(140px, 36vw, 190px);
       --gap: clamp(10px, 3vw, 18px);
       --padTop: clamp(26px, 6vw, 44px);
@@ -31,9 +31,12 @@
       --stroke: 2px;
     }
 
-    *{ box-sizing:border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html, body{
+    html,
+    body {
       height: 100%;
       margin: 0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -42,8 +45,7 @@
       overflow: hidden;
     }
 
-    /* ---------- Top Bar ---------- */
-    .topbar{
+    .topbar {
       position: sticky;
       top: 0;
       z-index: 10;
@@ -52,12 +54,12 @@
       grid-template-columns: 1fr auto auto;
       gap: 12px;
       align-items: center;
-      background: linear-gradient(to bottom, rgba(15,15,15,.92), rgba(15,15,15,.42));
+      background: linear-gradient(to bottom, rgba(15, 15, 15, .92), rgba(15, 15, 15, .42));
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
     }
 
-    .brand p{
+    .brand p {
       margin: 0;
       font-size: 12px;
       color: var(--muted);
@@ -65,48 +67,52 @@
       max-width: 880px;
     }
 
-    .controls{
-      display:flex;
+    .controls {
+      display: flex;
       gap: 10px;
-      align-items:center;
-      justify-content:flex-end;
+      align-items: center;
+      justify-content: flex-end;
       flex-wrap: wrap;
     }
-    .btn{
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
+
+    .btn {
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .06);
       color: var(--text);
       border-radius: 12px;
       padding: 10px 12px;
       cursor: pointer;
       font-size: 13px;
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      user-select:none;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.09);
-      border-color: rgba(255,255,255,.20);
+      user-select: none;
     }
 
-    .search{
-      display:flex;
+    .btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, .09);
+      border-color: rgba(255, 255, 255, .20);
+    }
+
+    .search {
+      display: flex;
       gap: 10px;
-      align-items:center;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
+      align-items: center;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .10);
       border-radius: 12px;
       padding: 10px 12px;
       min-width: 260px;
-      box-shadow: 0 10px 22px rgba(0,0,0,.25);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, .25);
     }
-    .search .hint{
+
+    .search .hint {
       font-size: 12px;
-      color: rgba(255,255,255,.55);
-      user-select:none;
+      color: rgba(255, 255, 255, .55);
+      user-select: none;
       white-space: nowrap;
     }
-    .search input{
+
+    .search input {
       width: 100%;
       border: 0;
       outline: 0;
@@ -115,19 +121,28 @@
       font-size: 13px;
     }
 
-    @media (max-width: 760px){
-      .topbar{
+    @media (max-width: 760px) {
+      .topbar {
         grid-template-columns: 1fr;
         gap: 10px;
         padding: 12px 12px;
       }
-      .controls{ justify-content:flex-start; }
-      .search{ min-width: 0; width: 100%; }
-      .brand p{ font-size: 11px; }
+
+      .controls {
+        justify-content: flex-start;
+      }
+
+      .search {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .brand p {
+        font-size: 11px;
+      }
     }
 
-    /* ---------- Scrollable Canvas ---------- */
-    #family-tree-wrapper{
+    #family-tree-wrapper {
       height: calc(100vh - 72px);
       overflow: auto;
       padding: 26px 14px 80px;
@@ -135,72 +150,93 @@
       -webkit-overflow-scrolling: touch;
       touch-action: pan-x pan-y;
     }
-    @media (max-width: 760px){
-      #family-tree-wrapper{ height: calc(100vh - 140px); }
+
+    @media (max-width: 760px) {
+      #family-tree-wrapper {
+        height: calc(100vh - 140px);
+      }
     }
 
-    #family-tree{
+    #family-tree {
       width: fit-content;
       height: fit-content;
       margin: 0 auto;
     }
 
-    /* ---------- Tree Layout ---------- */
-    .tree ul{
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
+    .tree ul {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
       padding-top: var(--padTop);
-      position:relative;
+      position: relative;
       margin: 0;
       white-space: nowrap;
     }
-    .tree li{
-      list-style:none;
+
+    .tree li {
+      list-style: none;
       padding: var(--padTop) var(--liPadX) 0;
-      position:relative;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .tree li::before,
-    .tree li::after{
-      content:'';
-      position:absolute;
+    .tree li::after {
+      content: '';
+      position: absolute;
       top: 0;
       width: 50%;
       height: var(--padTop);
       border-top: var(--stroke) solid var(--line);
     }
-    .tree li::before{ right: 50%; }
-    .tree li::after{
+
+    .tree li::before {
+      right: 50%;
+    }
+
+    .tree li::after {
       left: 50%;
       border-left: var(--stroke) solid var(--line);
     }
 
     .tree li:only-child::before,
-    .tree li:only-child::after{ display:none; }
-    .tree li:only-child{ padding-top: 0; }
+    .tree li:only-child::after {
+      display: none;
+    }
+
+    .tree li:only-child {
+      padding-top: 0;
+    }
 
     .tree li:first-child::before,
-    .tree li:last-child::after{ border:0; }
+    .tree li:last-child::after {
+      border: 0;
+    }
 
-    .tree li:last-child::before{ border-right: var(--stroke) solid var(--line); }
-    .tree li:first-child::after{ border-left: var(--stroke) solid var(--line); }
+    .tree li:last-child::before {
+      border-right: var(--stroke) solid var(--line);
+    }
 
-    .tree ul ul::before{
-      content:'';
-      position:absolute;
+    .tree li:first-child::after {
+      border-left: var(--stroke) solid var(--line);
+    }
+
+    .tree ul ul::before {
+      content: '';
+      position: absolute;
       top: 0;
       left: 50%;
       height: var(--padTop);
       border-left: var(--stroke) solid var(--line);
     }
 
-    .tree ul.collapsed{ display:none; }
+    .tree ul.collapsed {
+      display: none;
+    }
 
-    .couple{
+    .couple {
       display: inline-flex;
       gap: var(--gap);
       align-items: flex-start;
@@ -208,85 +244,122 @@
       flex-direction: row;
     }
 
-    /* ---------- Name Only Card ---------- */
-    .node-card{
-      width: var(--cardW);
+    .node-card {
+      min-width: var(--cardMinW);
+      max-width: var(--cardMaxW);
+      width: max-content;
       border-radius: var(--radius);
-      overflow:hidden;
+      overflow: hidden;
       background: linear-gradient(to bottom, var(--panel), var(--panel2));
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      cursor:pointer;
+      cursor: pointer;
       transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
-      outline:none;
+      outline: none;
       -webkit-tap-highlight-color: transparent;
-      user-select:none;
+      user-select: none;
     }
-    .node-card:hover{
+
+    .node-card:hover {
       transform: translateY(-2px);
       border-color: var(--border2);
-      box-shadow: 0 18px 55px rgba(0,0,0,.62);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .62);
     }
-    .node-card:active{ transform: translateY(0px) scale(0.99); }
 
-    /* keep header color (orange for alive, grey for deceased) */
-    .node-top{
+    .node-card:active {
+      transform: translateY(0px) scale(0.99);
+    }
+
+    .node-top {
       height: 38px;
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       padding: 8px 10px;
       background: var(--accent, #ff8a00);
     }
-    .dots{
+
+    .dots {
       letter-spacing: 2px;
       font-weight: 900;
       opacity: .95;
-      user-select:none;
+      user-select: none;
     }
 
-    .node-name{
-      padding: 12px 12px 14px;
-      text-align:center;
+    .node-name {
+      padding: 14px 18px 16px;
+      text-align: center;
       font-weight: 900;
       font-size: clamp(14px, 4.2vw, 18px);
-      line-height: 1.18;
-      text-shadow: 0 1px 0 rgba(0,0,0,.25);
+      line-height: 1.25;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+      white-space: normal;
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
 
-    /* Search highlight */
-    .node-card.highlight{
-      box-shadow: 0 0 0 3px rgba(255,255,255,.22), 0 24px 70px rgba(0,0,0,.70);
-      border-color: rgba(255,255,255,.35);
+    .node-card.highlight {
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, .22), 0 24px 70px rgba(0, 0, 0, .70);
+      border-color: rgba(255, 255, 255, .35);
       transform: translateY(-2px) scale(1.02);
     }
 
-    /* Fade expand/collapse */
     @keyframes fadeInBranch {
-      from { opacity: 0; transform: translateY(-4px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeOutBranch {
-      from { opacity: 1; transform: translateY(0); }
-      to   { opacity: 0; transform: translateY(-4px); }
-    }
-    .branch-opening{ animation: fadeInBranch 220ms ease-out both; }
-    .branch-closing{ animation: fadeOutBranch 180ms ease-in both; }
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
 
-    /* PHONE: even smaller name cards */
-    @media (max-width: 520px){
-      :root{
-        --cardW: 132px;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeOutBranch {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      to {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+    }
+
+    .branch-opening {
+      animation: fadeInBranch 220ms ease-out both;
+    }
+
+    .branch-closing {
+      animation: fadeOutBranch 180ms ease-in both;
+    }
+
+    @media (max-width: 520px) {
+      :root {
+        --cardMinW: 132px;
+        --cardMaxW: 220px;
         --gap: 10px;
         --padTop: 26px;
         --liPadX: 8px;
       }
-      .node-top{ height: 34px; padding: 7px 8px; }
-      .node-name{ font-size: 14px; padding: 10px 10px 12px; }
+
+      .node-top {
+        height: 34px;
+        padding: 7px 8px;
+      }
+
+      .node-name {
+        font-size: 14px;
+        padding: 12px 14px 14px;
+      }
     }
-    @media (max-width: 380px){
-      :root{
-        --cardW: 122px;
+
+    @media (max-width: 380px) {
+      :root {
+        --cardMinW: 122px;
+        --cardMaxW: 190px;
         --gap: 8px;
         --padTop: 22px;
         --liPadX: 6px;
@@ -298,7 +371,8 @@
 <body>
   <div class="topbar">
     <div class="brand">
-      <p>Crafted with care by Sagar C. Patel, with heartfelt contributions and cherished information shared by Bharat I. Patel.</p>
+      <p>Crafted with care by Sagar C. Patel, with heartfelt contributions and cherished information shared by Bharat I.
+        Patel.</p>
     </div>
 
     <div class="controls">
@@ -317,37 +391,61 @@
     <div id="family-tree" class="tree"></div>
   </div>
 
-  <!-- Firebase (v8.x) -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
   <script>
     const firebaseConfig = {
-            apiKey: "AIzaSyBFsvUtF5LNVVgCUBIjjGJ-Qjby9m2DTWA",
-            authDomain: "family-tree-5a724.firebaseapp.com",
-            projectId: "family-tree-5a724",
-            storageBucket: "family-tree-5a724.appspot.com",
-            messagingSenderId: "298658072073",
-            appId: "1:298658072073:web:d01b234c71c48b22555ad8"
-        };
+      apiKey: "AIzaSyBFsvUtF5LNVVgCUBIjjGJ-Qjby9m2DTWA",
+      authDomain: "family-tree-5a724.firebaseapp.com",
+      projectId: "family-tree-5a724",
+      storageBucket: "family-tree-5a724.appspot.com",
+      messagingSenderId: "298658072073",
+      appId: "1:298658072073:web:d01b234c71c48b22555ad8"
+    };
 
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
     let cachedMembers = [];
 
+    function getCreatedAtValue(member) {
+      const c = member.createdAt;
+
+      if (!c) return 0;
+
+      if (typeof c.toMillis === 'function') return c.toMillis();
+      if (c instanceof Date) return c.getTime();
+      if (typeof c === 'number') return c;
+
+      const parsed = new Date(c).getTime();
+      return isNaN(parsed) ? 0 : parsed;
+    }
+
     function fetchFamilyMembers() {
-      db.collection("WholeFamily_AmayDas_Kolasana").get().then((querySnapshot) => {
-        const familyMembers = [];
-        querySnapshot.forEach((doc) => familyMembers.push({ id: doc.id, ...doc.data() }));
-        cachedMembers = familyMembers;
-        displayFamilyTree(familyMembers);
-      }).catch(err => console.error("Error fetching family members:", err));
+      db.collection("WholeFamily_AmayDas_Kolasana").get()
+        .then((querySnapshot) => {
+          const familyMembers = [];
+          querySnapshot.forEach((doc) => familyMembers.push({ id: doc.id, ...doc.data() }));
+
+          familyMembers.sort((a, b) => getCreatedAtValue(a) - getCreatedAtValue(b));
+
+          cachedMembers = familyMembers;
+          displayFamilyTree(familyMembers);
+        })
+        .catch(err => {
+          console.error("Error fetching family members:", err);
+          document.getElementById('family-tree').innerHTML =
+            "<p style='color:rgba(255,255,255,.7)'>Error loading family tree.</p>";
+        });
     }
 
     function displayFamilyTree(familyMembers) {
       const familyTreeDiv = document.getElementById('family-tree');
-      const rootMembers = familyMembers.filter(m => m.parentId === "00");
+
+      const rootMembers = familyMembers
+        .filter(m => m.parentId === "00")
+        .sort((a, b) => getCreatedAtValue(a) - getCreatedAtValue(b));
 
       if (!rootMembers.length) {
         familyTreeDiv.innerHTML = "<p style='color:rgba(255,255,255,.7)'>No root members found (parentId should be \"00\").</p>";
@@ -355,22 +453,23 @@
       }
 
       let html = "";
-      rootMembers.forEach(root => { html += generateTreeHTML(root, familyMembers); });
+      rootMembers.forEach(root => {
+        html += generateTreeHTML(root, familyMembers);
+      });
+
       familyTreeDiv.innerHTML = `<ul>${html}</ul>`;
 
       addListeners();
       adjustScrollToCenter();
     }
 
-    // still uses isDeceased to color header grey
     function accentFor(member) {
       if (member.isDeceased === true) return "#6b6b6b";
       return member.accentColor || "#ff8a00";
     }
 
     function truncateName(name) {
-      const n = (name || "Unknown").trim();
-      return n.length > 18 ? (n.slice(0, 16) + "…") : n;
+      return (name || "Unknown").trim();
     }
 
     function nodeCardHTML(member) {
@@ -398,13 +497,17 @@
         html += nodeCardHTML(member);
       }
 
-      const children = allMembers.filter(m =>
-        m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId)
-      );
+      const children = allMembers
+        .filter(m =>
+          m.parentId === member.id || (member.spouseId && m.parentId === member.spouseId)
+        )
+        .sort((a, b) => getCreatedAtValue(a) - getCreatedAtValue(b));
 
       if (children.length) {
         html += `<ul class="collapsed">`;
-        children.forEach(child => { html += generateTreeHTML(child, allMembers); });
+        children.forEach(child => {
+          html += generateTreeHTML(child, allMembers);
+        });
         html += `</ul>`;
       }
 
@@ -431,7 +534,6 @@
     }
 
     function addListeners() {
-      // Clicking the card toggles children
       document.querySelectorAll('.node-card').forEach(card => {
         card.addEventListener('click', () => {
           const li = card.closest('li');
@@ -463,10 +565,12 @@
     function collapseAllNodes() {
       const tree = document.getElementById('family-tree');
       const rootUl = tree.querySelector(':scope > ul');
+
       tree.querySelectorAll('ul').forEach(ul => {
         if (ul !== rootUl && !ul.classList.contains('collapsed')) toggleBranch(ul, false);
         if (ul === rootUl) ul.classList.remove('collapsed');
       });
+
       adjustScrollToCenter();
     }
 
@@ -477,10 +581,9 @@
       const wrapper = document.getElementById('family-tree-wrapper');
       const tree = document.getElementById('family-tree');
       wrapper.scrollLeft = (tree.scrollWidth - wrapper.clientWidth) / 2;
-      wrapper.scrollTop  = 0;
+      wrapper.scrollTop = 0;
     }
 
-    // Search (still works)
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('keydown', (e) => {
       if (e.key !== 'Enter') return;
@@ -507,4 +610,5 @@
     window.onload = fetchFamilyMembers;
   </script>
 </body>
+
 </html>
